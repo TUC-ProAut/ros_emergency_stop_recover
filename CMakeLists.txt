@@ -26,8 +26,6 @@ catkin_package(
 )
 
 include_directories(
-  SYSTEM 
-    include
     ${catkin_INCLUDE_DIRS}
 )
 
@@ -35,7 +33,6 @@ add_executable(ros_emergency_stop_recover
     src/emergency_stop_recover.cpp
 )
 add_dependencies(ros_emergency_stop_recover
-    ${tiago_pcl_tutorial_EXPORTED_TARGETS}
     ${catkin_EXPORTED_TARGETS}
     ros_emergency_stop_recover_gencfg
 )
