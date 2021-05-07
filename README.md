@@ -1,32 +1,32 @@
 **ROS Emergency Stop and Recover**
 -
-This repository is ROS implementation of Emergency Stop module and Recovery module for autonomous robot. 
+This repository is ROS implementation of Emergency Stop module and Recovery module for autonomous robot.
 
-**Problem Statement** 
+**Problem Statement**
 
 In indoor environments crowded with people, an important factor is to consider safety of robot. Sometimes there are people moving too close to an autonomos robot, and as as a standard solution robot triggers emergency stop. But there are no strategies available to as to how robot recovers or move itself after emergency stop. We propose a simple solution for robot safety, which will not only implement emergency stop of the robot but also recover the robot from emergency stop mode. Also, keeping in check that recovery process will not affect the autonomously robot pursuing its current goal.
 
 
 **Solution**
-1. If any object is in robot's close vicinty ( designated Safety Region), robot will first implement an emeregency stop. 
+1. If any object is in robot's close vicinty ( designated Safety Region), robot will first implement an emeregency stop.
 2. Robot will push itself in oppsite direction of the object entered in safety region, until there is no object present in the safety region.
-3. When there are no objects present in safety region, robot will resume its normal operation. 
+3. When there are no objects present in safety region, robot will resume its normal operation.
 
 **Demo:**
 
-![Demo Gif](./demo.gif)
+![Demo Gif](doc/demo.gif)
 
 **Input:**  point cloud topic (default = /input_cloud)
 
 **Output:** recover velocity published on topic (default = /cmd_vel)
 
-**Configurations:** 
+**Configurations:**
 
 1. safety region: Dimensions of safety region, read more [here](./ros_emergency_stop_recover/launch/emergency_stop_recover.launch)
 
 2. src/config/twist_mux.yaml: append the all acting velocities on robot, with highest priority geven to recover/cmd_vel and all the robot is subscribing to '/cmd_vel' topic.
 
-3. src/config/params.cfg: 
+3. src/config/params.cfg:
 
 - pointcloudTopic: Topic Name of input pointcloud
 - baseLinkFrame: Frame ID of the base link
