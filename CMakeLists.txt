@@ -2,17 +2,15 @@ cmake_minimum_required(VERSION 3.0.2)
 project(emergency_stop_recover_pa)
 
 find_package(catkin REQUIRED COMPONENTS
-    pcl_conversions
-    pcl_ros
     roscpp
     dynamic_reconfigure
-    tf
-    sensor_msgs
+
+    pcl_ros
+    pcl_conversions
+
     std_msgs
-    message_generation
-    tf2_ros
-    nav_msgs
-    tf2
+    sensor_msgs
+
     roslint
 )
 
@@ -22,7 +20,11 @@ generate_dynamic_reconfigure_options(
 
 catkin_package(
   CATKIN_DEPENDS
-    roscpp dynamic_reconfigure sensor_msgs
+    roscpp
+    dynamic_reconfigure
+
+    std_msgs
+    sensor_msgs
 )
 
 include_directories(

@@ -50,36 +50,23 @@
 #include <ros/ros.h>
 #include <dynamic_reconfigure/server.h>
 
-#include <tf/transform_listener.h>
-#include <tf2_ros/transform_listener.h>
-#include <tf2_ros/transform_broadcaster.h>
-#include <tf2_ros/buffer.h>
-#include <tf2/LinearMath/Quaternion.h>
-
 #include <pcl_ros/point_cloud.h>
 #include <pcl_ros/transforms.h>
 #include <pcl_conversions/pcl_conversions.h>
 
 // msgs
-#include <std_msgs/Bool.h>
-#include <std_msgs/String.h>
 #include <sensor_msgs/PointCloud2.h>
 #include <sensor_msgs/point_cloud2_iterator.h>
-#include <geometry_msgs/TransformStamped.h>
-#include <nav_msgs/Odometry.h>
+#include <std_msgs/Bool.h>
+#include <std_msgs/String.h>
 
 // PCL headers
 #include <pcl/filters/passthrough.h>
 #include <pcl/segmentation/extract_polygonal_prism_data.h>
 
 // Std C++ headers
-#include <iostream>
-#include <math.h>
-#include <string>
 #include <vector>
-#include <ctime>
-#include <time.h>
-#include <boost/foreach.hpp>
+#include <string>
 #include <boost/lexical_cast.hpp>
 
 
