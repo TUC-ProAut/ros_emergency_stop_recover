@@ -44,7 +44,7 @@
 ******************************************************************************/
 
 // dynamic reconfigure
-#include <ros_emergency_stop_recover/regionConfig.h>
+#include <emergency_stop_recover_pa/regionConfig.h>
 
 // ROS headers
 #include <ros/ros.h>
@@ -111,9 +111,9 @@ class EmergencyStop
   protected:
     void check_inlier(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud);
     void cloud_cb(const sensor_msgs::PointCloud2ConstPtr& input);
-    void dynam_CB(const ros_emergency_stop_recover::regionConfig &config, uint32_t level);
-    dynamic_reconfigure::Server<ros_emergency_stop_recover::regionConfig> reconf_server;
-    dynamic_reconfigure::Server<ros_emergency_stop_recover::regionConfig>::CallbackType reconf_cb;
+    void dynam_CB(const emergency_stop_recover_pa::regionConfig &config, uint32_t level);
+    dynamic_reconfigure::Server<emergency_stop_recover_pa::regionConfig> reconf_server;
+    dynamic_reconfigure::Server<emergency_stop_recover_pa::regionConfig>::CallbackType reconf_cb;
 };
 
 
@@ -172,7 +172,7 @@ void EmergencyStop::cloud_cb(const sensor_msgs::PointCloud2ConstPtr& input)
     }
 }
 
-void EmergencyStop::dynam_CB(const ros_emergency_stop_recover::regionConfig &config, uint32_t level)
+void EmergencyStop::dynam_CB(const emergency_stop_recover_pa::regionConfig &config, uint32_t level)
 {
     _pointcloud_topic   = config.pointcloudTopic;
     _base_link_frame    = config.baseLinkFrame;
@@ -323,7 +323,7 @@ void EmergencyStop::check_inlier(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud)
 /****************************[main]*******************************************/
 int main(int argc, char** argv)
 {
-    ros::init(argc, argv, "emergency_stop_recover");
+    ros::init(argc, argv, "emergency_stop_recover_pa");
     ros::NodeHandle nh;
     proaut::EmergencyStop emergency_stop(nh);
     ros::spin();

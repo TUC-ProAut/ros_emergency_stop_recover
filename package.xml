@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package>
-    <name>ros_emergency_stop_recover</name>
+    <name>emergency_stop_recover_pa</name>
     <version>0.0.0</version>
-    <description>ProAut ros_emergency_stop_recover package</description>
+    <description>ProAut emergency_stop_recover package</description>
     <maintainer email="abkar@hrz.tu-chemnitz.de">Abhishek Karote</maintainer>
     <license>BSD</license>
 

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(ros_emergency_stop_recover)
+project(emergency_stop_recover_pa)
 
 find_package(catkin REQUIRED COMPONENTS
     pcl_conversions
@@ -33,8 +33,7 @@ add_executable(ros_emergency_stop_recover
     src/emergency_stop_recover.cpp
 )
 add_dependencies(ros_emergency_stop_recover
-    ${catkin_EXPORTED_TARGETS}
-    ros_emergency_stop_recover_gencfg
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
 )
 target_link_libraries(ros_emergency_stop_recover
     ${catkin_LIBRARIES}
