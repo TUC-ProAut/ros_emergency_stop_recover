@@ -1,14 +1,20 @@
 <launch>
-  
-  <!-- Loading twist_mux.yaml file-->
-  <node pkg="twist_mux" type="twist_mux" name="twist_mux">
-  <rosparam command="load" file="$(find ros_emergency_stop_recover)/config/twist_mux.yaml" />
-  <remap from="cmd_vel_out" to="/cmd_vel"/>
-  </node>
-  
-   <!--calling emregency-recover MODULE -->
-   <node name="ros_emergency_stop_recover" pkg="ros_emergency_stop_recover" type="emergency_stop_recover" output="screen" respawn="true">
-   <rosparam param="safetyregion">[0.15, 0.15,0.00,-0.15, 0.15,0.00,-0.15, -0.15,0.00,0.15, -0.15,0.00]</rosparam>
-  </node>  
 
+    <!-- Loading twist_mux.yaml file-->
+    <node pkg="twist_mux" type="twist_mux" name="twist_mux">
+        <rosparam command="load" file="$(find ros_emergency_stop_recover)/config/twist_mux.yaml" />
+        <remap from="cmd_vel_out" to="/cmd_vel"/>
+    </node>
+
+    <!--calling emergency-recover MODULE -->
+    <node pkg="ros_emergency_stop_recover" type="emergency_stop_recover" name="ros_emergency_stop_recover" output="screen" respawn="true">
+        <rosparam param="safetyregion">
+            [0.15, 0.15,
+             0.00,-0.15,
+             0.15, 0.00,
+            -0.15,-0.15,
+             0.00, 0.15,
+            -0.15, 0.00]
+        </rosparam>
+    </node>
 </launch>
