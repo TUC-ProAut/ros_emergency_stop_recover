@@ -67,6 +67,7 @@
 // Std C++ headers
 #include <vector>
 #include <string>
+#include <sstream>
 #include <boost/lexical_cast.hpp>
 
 
@@ -128,11 +129,14 @@ EmergencyStop::EmergencyStop(ros::NodeHandle nh):
         {
             polygon.push_back(pcl::PointXYZ(polygon_list[i], polygon_list[i+1], polygon_list[i+2]));
         }
-        std::cout << "Safety Region:" << std::endl;
+        std::stringstream str;
+        str << "Safety Region:" << std::endl;
         for ( unsigned i = 0; i < polygon.size(); ++i )
         {
-            printf("\t(%f, %f, %f)\n", polygon.points[i].x, polygon.points[i].y, polygon.points[i].z);
+            str << "\t(" << polygon.points[i].x << ", " << polygon.points[i].y
+                << ", " << polygon.points[i].z << ')' << std::endl;
         }
+        ROS_INFO_STREAM(str.str());
     }
     ROS_INFO_STREAM("Pointcloud topic : " << _pointcloud_topic);
     ROS_INFO_STREAM("Velocity  topic : " << _velocity_topic);
