@@ -113,11 +113,11 @@ EmergencyStop::EmergencyStop(ros::NodeHandle nh):
 
     vel_pub = nh.advertise<geometry_msgs::Twist>(_velocity_topic, 1);
     pub_inlier = nh.advertise<sensor_msgs::PointCloud2>("inlier_cloud", 1);
-    pub_e_stop = nh.advertise<std_msgs::Bool>("/e_stop", 1);
-    pub_e_stop_status = nh.advertise<std_msgs::String>("/e_stop_status", 1);
+    pub_e_stop = nh.advertise<std_msgs::Bool>("e_stop", 1);
+    pub_e_stop_status = nh.advertise<std_msgs::String>("e_stop_status", 1);
     nh.getParam("pointcloud_topic", _pointcloud_topic);
     sub = nh.subscribe(_pointcloud_topic, 1, &EmergencyStop::cloud_cb, this);
-    if (!nh.hasParam("/emergency_stop_recover/safetyregion"))
+    if (!nh.hasParam("safetyregion"))
     {
         ROS_INFO("No param named 'safetyregion'");
     }
@@ -311,7 +311,7 @@ void EmergencyStop::check_inlier(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud)
 int main(int argc, char** argv)
 {
     ros::init(argc, argv, "emergency_stop_recover_pa");
-    ros::NodeHandle nh;
+    ros::NodeHandle nh("~");
     proaut::EmergencyStop emergency_stop(nh);
     ros::spin();
     return 0;

@@ -3,7 +3,7 @@
     <!-- Loading twist_mux.yaml file-->
     <node pkg="twist_mux" type="twist_mux" name="twist_mux">
         <rosparam command="load" file="$(find emergency_stop_recover_pa)/config/twist_mux.yaml" />
-        <remap from="cmd_vel_out" to="/cmd_vel"/>
+        <remap from="cmd_vel_out" to="cmd_vel"/>
     </node>
 
     <!--calling emergency-recover MODULE -->
