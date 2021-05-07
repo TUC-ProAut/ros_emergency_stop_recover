@@ -303,8 +303,7 @@ void EmergencyStop::check_inlier(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud)
         }
 
         // publish ros messages
-        inlier_cloud_ros.header.frame_id = cloud->header.frame_id;
-        inlier_cloud_ros.header.stamp = ros::Time::now();
+        pcl_conversions::fromPCL(cloud->header, inlier_cloud_ros.header);
         pub_inlier.publish(inlier_cloud_ros);
     }
 
